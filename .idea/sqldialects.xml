@@ -2,6 +2,6 @@
 <project version="4">
   <component name="SqlDialectMappings">
     <file url="file://D:/go class/GoWeb开发进阶实战（gin框架）/00、课程配套资料/bluebell完整代码/__MACOSX/bluebell/models/._create_table.sql" dialect="MySQL" />
-    <file url="file://$PROJECT_DIR$/models/create_table.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/create_table.sql" dialect="MySQL" />
   </component>
 </project>
