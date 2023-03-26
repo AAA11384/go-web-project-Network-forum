@@ -17,8 +17,9 @@ const (
 )
 
 var (
-	ErrVoteTimeExpire = errors.New("投票时间已过")
-	ErrVoteRepeat     = errors.New("禁止重复投票")
+	ErrVoteForInvalidPost = errors.New("此帖不存在")
+	ErrVoteTimeExpire     = errors.New("投票时间已过")
+	ErrVoteRepeat         = errors.New("禁止重复投票")
 )
 
 func CreatePost(postID, communityID int64) error {
@@ -42,8 +43,11 @@ func CreatePost(postID, communityID int64) error {
 }
 
 func VoteForPost(userID, postID string, newValue float64) error {
-	//查询帖子是否过期
+	//查询帖子是否存在或者过期
 	postTime := client.ZScore(ctx, getRedisKey(KeyPostTime), postID).Val()
+	if postTime == 0 {
+		return ErrVoteForInvalidPost
+	}
 	zap.L().Debug("client.ZScore(ctx, getRedisKey(KeyPostTime), postID).Val()", zap.Float64("val", postTime))
 	if time.Now().Unix()-int64(postTime) > oneWeekInSeconds {
 		return ErrVoteTimeExpire

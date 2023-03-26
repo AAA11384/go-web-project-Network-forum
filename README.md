@@ -35,6 +35,16 @@ Example Body
 }
 ```
 
+Response
+
+```json
+{
+    "code": 1000,
+    "msg": "success",
+    "data": "success"
+}
+```
+
 #### log in
 
 `POST` `127.0.0.1:8081/api/v1/login`
@@ -45,6 +55,20 @@ Example Body
 {
     "username": "aaa1138499002",
     "password": "12345678"
+}
+```
+
+Response
+
+```json
+{
+    "code": 1000,
+    "msg": "success",
+    "data": {
+        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxNTkzODMxMDg4NTUwMDkyODAsInBhc3N3b3JkIjoiYWFhMTEzODQ5OTAwMiIsImlzcyI6Im15X3Byb2plY3QiLCJleHAiOjE2Nzk4Mzc5MTl9.cMKX772cq5u3BzQBbfm2zbGZmAscz75RSExAJXxNH6w",
+        "user_id": "159383108855009280",
+        "user_name": "aaa1138499002"
+    }
 }
 ```
 
@@ -62,6 +86,16 @@ Example Body
 }
 ```
 
+Response
+
+```json
+{
+    "code": 1000,
+    "msg": "success",
+    "data": null
+}
+```
+
 #### vote
 
 `POST` `127.0.0.1:8081/api/v1/vote/`
@@ -72,6 +106,22 @@ Example Body
 {
     "post_id": "162998689709690880",
     "direction": "1"
+}
+```
+
+Response
+
+```json
+{
+    "code": 1006,
+    "msg": "此帖不存在",
+    "data": null
+}
+//or
+{
+    "code": 1006,
+    "msg": "投票时间已过",
+    "data": null
 }
 ```
 
@@ -140,6 +190,14 @@ There are consistent error format in controllers and logic/mysql, every kind of 
 There are two keys in redis : to store ID of all the posts, `bluebell:post:time` is in order of time,`bluebell:post:score`is in order of score. Every communities has many posts, so every community has a key in redis, the key is `bluebell:community:communityid`, value is ID of all the posts in this community.
 
 There is an API, let user inquire all posts in one community by specified order, we use `ZInterStore` to generate a new key named `community/communityid/order` and set 60s expire time to it. Expire time let server don't need to execute `ZInterStore` every time when a request coming. Because it is enormous cost when there are huge posts in server.
+
+### Vote for post 
+
+every one can vote for a post. Avoiding a ancient post hot anew, we regulate users can't vote for a post after one week after posted.
+
+At the same time we maintain a key in redis named `bluebell:post:Voted:postID`, it contains the user id and use 1 and -1 to stand for agree and against. When a user vote for a post, program will inquiry the key first to detect whether there is a repeat vote,  program also support cancel vote.
+
+The original score of a post is `7 * 24 * 3600`(the seconds of a week), when a post get voted the score will increase or decrease 432. The program calculate a post expired or not depends on the score is greater than zero or not.
 
 ### Redis Txpipeline
 

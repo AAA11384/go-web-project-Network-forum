@@ -1,0 +1,38 @@
+2023-03-26T19:38:39.887+0800	INFO	logger/logger.go:72	/api/v1/login	{"status": 200, "method": "POST", "path": "/api/v1/login", "query": "", "ip": "127.0.0.1", "user-agent": "PostmanRuntime/7.31.3", "errors": "", "cost": 0.0043259}
+2023-03-26T19:38:58.575+0800	INFO	logger/logger.go:72	/api/v1/signup	{"status": 200, "method": "POST", "path": "/api/v1/signup", "query": "", "ip": "127.0.0.1", "user-agent": "PostmanRuntime/7.31.3", "errors": "", "cost": 0.0050794}
+2023-03-26T19:39:45.203+0800	INFO	logger/logger.go:72	/api/v1/post	{"status": 200, "method": "POST", "path": "/api/v1/post", "query": "", "ip": "127.0.0.1", "user-agent": "PostmanRuntime/7.31.3", "errors": "", "cost": 0.0060802}
+2023-03-26T19:40:18.127+0800	DEBUG	logic/vote.go:12	VoteForPost	{"userID": 159383108855009280, "postID": "162998689709690880", "direction": 1}
+2023-03-26T19:40:18.128+0800	DEBUG	redis/vote.go:47	client.ZScore(ctx, getRedisKey(KeyPostTime), postID).Val()	{"val": 1679828316}
+2023-03-26T19:40:18.128+0800	ERROR	controllers/vote.go:31	logic.VoteForPost() failed	{"error": "禁止重复投票"}
+2023-03-26T19:40:18.128+0800	INFO	logger/logger.go:72	/api/v1/vote	{"status": 200, "method": "POST", "path": "/api/v1/vote", "query": "", "ip": "127.0.0.1", "user-agent": "PostmanRuntime/7.31.3", "errors": "", "cost": 0.0015514}
+2023-03-26T19:40:27.385+0800	DEBUG	logic/vote.go:12	VoteForPost	{"userID": 159383108855009280, "postID": "162998689709690881", "direction": 1}
+2023-03-26T19:40:27.386+0800	DEBUG	redis/vote.go:47	client.ZScore(ctx, getRedisKey(KeyPostTime), postID).Val()	{"val": 0}
+2023-03-26T19:40:27.386+0800	ERROR	controllers/vote.go:31	logic.VoteForPost() failed	{"error": "投票时间已过"}
+2023-03-26T19:40:27.386+0800	INFO	logger/logger.go:72	/api/v1/vote	{"status": 200, "method": "POST", "path": "/api/v1/vote", "query": "", "ip": "127.0.0.1", "user-agent": "PostmanRuntime/7.31.3", "errors": "", "cost": 0.0009044}
+2023-03-26T19:40:32.658+0800	DEBUG	logic/vote.go:12	VoteForPost	{"userID": 159383108855009280, "postID": "162998689709681", "direction": 1}
+2023-03-26T19:40:32.659+0800	DEBUG	redis/vote.go:47	client.ZScore(ctx, getRedisKey(KeyPostTime), postID).Val()	{"val": 0}
+2023-03-26T19:40:32.659+0800	ERROR	controllers/vote.go:31	logic.VoteForPost() failed	{"error": "投票时间已过"}
+2023-03-26T19:40:32.659+0800	INFO	logger/logger.go:72	/api/v1/vote	{"status": 200, "method": "POST", "path": "/api/v1/vote", "query": "", "ip": "127.0.0.1", "user-agent": "PostmanRuntime/7.31.3", "errors": "", "cost": 0.0016442}
+2023-03-26T19:44:29.547+0800	INFO	qimiproject/main.go:79	Shutdown Server ...
+2023-03-26T19:44:29.547+0800	INFO	qimiproject/main.go:87	Server exiting
+2023-03-26T19:44:39.469+0800	DEBUG	logic/vote.go:12	VoteForPost	{"userID": 159383108855009280, "postID": "162998689709681", "direction": 1}
+2023-03-26T19:44:39.470+0800	DEBUG	redis/vote.go:47	client.ZScore(ctx, getRedisKey(KeyPostTime), postID).Val()	{"val": 0}
+2023-03-26T19:44:39.470+0800	ERROR	controllers/vote.go:31	logic.VoteForPost() failed	{"error": "投票时间已过"}
+2023-03-26T19:44:39.470+0800	INFO	logger/logger.go:72	/api/v1/vote	{"status": 200, "method": "POST", "path": "/api/v1/vote", "query": "", "ip": "127.0.0.1", "user-agent": "PostmanRuntime/7.31.3", "errors": "", "cost": 0.0025151}
+2023-03-26T19:44:49.286+0800	DEBUG	logic/vote.go:12	VoteForPost	{"userID": 159383108855009280, "postID": "1609681", "direction": 1}
+2023-03-26T19:44:49.287+0800	DEBUG	redis/vote.go:47	client.ZScore(ctx, getRedisKey(KeyPostTime), postID).Val()	{"val": 0}
+2023-03-26T19:44:49.287+0800	ERROR	controllers/vote.go:31	logic.VoteForPost() failed	{"error": "投票时间已过"}
+2023-03-26T19:44:49.287+0800	INFO	logger/logger.go:72	/api/v1/vote	{"status": 200, "method": "POST", "path": "/api/v1/vote", "query": "", "ip": "127.0.0.1", "user-agent": "PostmanRuntime/7.31.3", "errors": "", "cost": 0.000852}
+2023-03-26T19:48:31.074+0800	INFO	qimiproject/main.go:79	Shutdown Server ...
+2023-03-26T19:48:31.074+0800	INFO	qimiproject/main.go:87	Server exiting
+2023-03-26T19:48:40.614+0800	DEBUG	logic/vote.go:12	VoteForPost	{"userID": 159383108855009280, "postID": "1609681", "direction": 1}
+2023-03-26T19:48:40.615+0800	ERROR	controllers/vote.go:31	logic.VoteForPost() failed	{"error": "此帖不存在"}
+2023-03-26T19:48:40.615+0800	INFO	logger/logger.go:72	/api/v1/vote	{"status": 200, "method": "POST", "path": "/api/v1/vote", "query": "", "ip": "127.0.0.1", "user-agent": "PostmanRuntime/7.31.3", "errors": "", "cost": 0.002114}
+2023-03-26T19:48:49.736+0800	INFO	qimiproject/main.go:79	Shutdown Server ...
+2023-03-26T19:48:49.736+0800	INFO	qimiproject/main.go:87	Server exiting
+2023-03-26T19:50:02.882+0800	DEBUG	logic/vote.go:12	VoteForPost	{"userID": 159383108855009280, "postID": "160060613769302016", "direction": 1}
+2023-03-26T19:50:02.884+0800	DEBUG	redis/vote.go:51	client.ZScore(ctx, getRedisKey(KeyPostTime), postID).Val()	{"val": 1679127824}
+2023-03-26T19:50:02.884+0800	ERROR	controllers/vote.go:31	logic.VoteForPost() failed	{"error": "投票时间已过"}
+2023-03-26T19:50:02.884+0800	INFO	logger/logger.go:72	/api/v1/vote	{"status": 200, "method": "POST", "path": "/api/v1/vote", "query": "", "ip": "127.0.0.1", "user-agent": "PostmanRuntime/7.31.3", "errors": "", "cost": 0.0025838}
+2023-03-26T20:06:04.728+0800	INFO	qimiproject/main.go:79	Shutdown Server ...
+2023-03-26T20:06:04.729+0800	INFO	qimiproject/main.go:87	Server exiting

@@ -9,6 +9,7 @@ const (
 	CodeUserNotExist
 	CodeServerBusy
 	CodeWrongPassword
+	CodeVoteFail
 
 	CodeNeedLogin ResCode = 2000 + iota
 	CodeErrorAuth
@@ -23,6 +24,7 @@ var codeMsgMap = map[ResCode]string{
 	CodeUserNotExist:      "用户名未存在",
 	CodeServerBusy:        "服务器繁忙",
 	CodeWrongPassword:     "密码错误",
+	CodeVoteFail:          "投票失败",
 	CodeNeedLogin:         "需要登陆",
 	CodeErrorAuth:         "请求头中auth格式有误",
 	CodeInvalidToken:      "无效的Token",
