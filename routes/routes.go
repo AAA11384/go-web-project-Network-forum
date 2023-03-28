@@ -14,9 +14,6 @@ func SetUp() *gin.Engine {
 	r := gin.New()
 	r.Use(logger.GinLogger(), logger.GinRecovery(true))
 
-	r.LoadHTMLFiles("./templates/index.html")
-	r.Static("/static", "./static")
-
 	r.GET("/", func(c *gin.Context) {
 		c.HTML(http.StatusOK, "index.html", nil)
 	})
